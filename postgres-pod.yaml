@@ -1,0 +1,13 @@
+# postgres-pod.yaml: Define um Pod para o banco de dados PostgreSQL.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres   # Nome do Pod
+  labels:
+    app: postgres  # Rótulo app=postgres
+spec:
+  containers:
+  - name: postgres   # Nome do contêiner
+    image: alfecjo/bd-postgres:1.0   # Imagem Docker usada para criar o contêiner do PostgreSQL
+    ports:
+    - containerPort: 5432   # Porta em que o PostgreSQL está escutando dentro do contêiner

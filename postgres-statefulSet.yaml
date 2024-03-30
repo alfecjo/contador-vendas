@@ -1,0 +1,43 @@
+
+# postgres-statefulset.yaml: Por fim, um StatefulSet é definido para o PostgreSQL.
+#  Ele garante que o banco de dados tenha persistência de dados usando volumes
+#  persistentes e define as variáveis de ambiente necessárias, como o nome do banco
+#  de dados, usuário e senha.
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-statefulset   # Nome do StatefulSet
+spec:
+  serviceName: postgres-service   # Nome do Service associado ao StatefulSet
+  replicas: 1   # Número de réplicas do PostgreSQL
+  selector:
+    matchLabels:
+      app: postgres   # Seleciona os PODs que correspondem a este rótulo
+  template:
+    metadata:
+      labels:
+        app: postgres   # Rótulo aplicado aos PODs
+    spec:
+      containers:
+      - name: postgres   # Nome do contêiner
+        image: alfecjo/bd-postgres:1.0   # Imagem Docker usada para criar o contêiner do PostgreSQL
+        ports:
+        - containerPort: 5432   # Porta em que o PostgreSQL está escutando dentro do contêiner
+        volumeMounts:
+        - name: postgres-data   # Nome do volume
+          mountPath: /var/lib/postgresql/data   # Caminho de montagem para armazenamento persistente de dados
+        env:   # Variáveis de ambiente para configurar o PostgreSQL
+        - name: POSTGRES_DB
+          value: master   # Nome do banco de dados
+        - name: POSTGRES_USER
+          value: postgres   # Nome do usuário
+        - name: POSTGRES_PASSWORD
+          value: acfa   # Senha do usuário
+  volumeClaimTemplates:   # Template para volume persistente
+  - metadata:
+      name: postgres-data   # Nome do volume
+    spec:
+      accessModes: [ "ReadWriteOnce" ]   # Modo de acesso ao volume
+      resources:
+        requests:
+          storage: 1Gi   # Tamanho do volume

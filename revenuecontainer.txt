@@ -1,0 +1,91 @@
+1. Executando pela linha de comando um-a-um...
+docker network create net-singular
+docker build -t alfecjo/bd-postgres -f Dockerfile.postgres .
+docker run --name postgres -p 5432:5432 -d --network net-singular alfecjo/bd-postgres
+docker exec -it 5f bash
+psql -U postgres -d master
+\dt
+SELECT * FROM VENDAS;
+\q
+exit
+exit
+mvn test
+##### mudar de localhost para postgres o domínio no application.properties
+
+mvn clean package -DskipTests -Pprod
+mvn clean package -Pdev 
+docker build -t alfecjo/ic-devops .
+docker run --name ic-devops -p 8080:8080 -d --network net-singular alfecjo/ic-devops
+docker logs e51ee53543ab
+
+2. Executando o Docker Compose...
+docker build -t alfecjo/bd-postgres -f Dockerfile.postgres .
+docker build -t alfecjo/ic-devops .
+docker-compose up
+
+3. Executando pelo Kubernetes
+    Para executar os arquivos YAML relacionados ao Kubernetes e colocar sua aplicação e banco
+    de dados em funcionamento, você pode seguir os seguintes passos:
+
+a.Certifique-se de que o kubectl esteja configurado corretamente para se comunicar com o seu
+    cluster Kubernetes. Você pode configurar o kubectl para apontar para o seu cluster EKS 
+    executando aws eks update-kubeconfig --name <nome-do-cluster>.
+
+b.Depois de configurar o kubectl, navegue até o diretório onde os arquivos YAML estão
+    localizados.
+
+Execute o seguinte comando para implantar os recursos no Kubernetes NESTA ORDEM:
+kubectl apply -f postgres-service.yaml
+kubectl apply -f postgres-pod.yaml
+
+kubectl get pod -l app=postgres
+
+kubectl apply -f postgres-statefulset.yaml
+
+kubectl get statefulset
+
+kubectl exec -it postgres -- bash
+psql -U postgres -d master
+\dt
+SELECT * FROM VENDAS;
+\q
+exit
+exit
+________________________________________________________________________________________
+kubectl apply -f contador-vendas-deployment.yaml
+
+kubectl apply -f contador-vendas-service.yaml
+
+kubectl get svc contador-vendas-service
+
+kubectl delete deployment contador-vendas
+kubectl delete service contador-vendas-service
+kubectl get pods
+
+ kubectl logs contador-vendas-9fffd4bdf-9f78s
+
+c.Após executar esses comandos, o Kubernetes começará a criar os recursos
+    especificados nos arquivos YAML. Você pode verificar o status dos recursos
+    usando comandos como kubectl get pods, kubectl get services, etc.
+
+d.Quando todos os PODs estiverem em estado "Running" e os serviços estiverem 
+    disponíveis, sua aplicação e banco de dados estarão em funcionamento
+    no cluster Kubernetes.
+
+Para acessar sua aplicação, você pode usar o IP e a porta do serviço definido
+ no arquivo contador-vendas-service.yaml. Para acessar o banco de dados, você
+ pode usar o endereço do serviço PostgreSQL definido no arquivo postgres-service.yaml
+ e a porta padrão do PostgreSQL (5432, a menos que tenha sido modificada).
+
+Para encerrar os recursos implantados no Kubernetes, você pode usar o comando
+ kubectl delete seguido dos arquivos YAML correspondentes aos recursos que você
+ implantou. Aqui está como você pode fazer: 
+ kubectl delete -f contador-vendas-deployment.yaml
+ kubectl delete -f contador-vendas-service.yaml
+ kubectl delete -f postgres-pod.yaml
+ kubectl delete -f postgres-service.yaml
+ kubectl delete -f postgres-statefulset.yaml
+
+Isso irá excluir os recursos que foram implantados anteriormente no cluster Kubernetes.
+Certifique-se de estar no diretório correto onde os arquivos YAML estão localizados ou
+forneça o caminho completo para cada arquivo YAML, se estiver em um diretório diferente.

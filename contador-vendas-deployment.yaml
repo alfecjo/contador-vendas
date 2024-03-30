@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contador-vendas
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: contador-vendas
+  template:
+    metadata:
+      labels:
+        app: contador-vendas
+    spec:
+      containers:
+      - name: contador-vendas
+        image: alfecjo/ic-devops:1.7
+        ports:
+        - containerPort: 8080
+        
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10

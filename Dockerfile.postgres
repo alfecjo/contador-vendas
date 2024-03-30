@@ -1,0 +1,16 @@
+# Imagem oficial do PostgreSQL como base
+FROM postgres:latest
+
+# src\main\resources\db\migration\V1__create-table-vendas.sql
+COPY src/main/resources/db/migration/V1__create-table-vendas.sql /docker-entrypoint-initdb.d/
+
+# Definir variáveis de ambiente para configurar o PostgreSQL
+ENV POSTGRES_DB=master
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=acfa
+
+# Exponha a porta padrão do PostgreSQL
+EXPOSE 5432
+
+# Comando para iniciar o servidor PostgreSQL quando o contêiner for iniciado
+CMD ["postgres"]
