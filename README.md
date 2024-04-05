@@ -1,4 +1,4 @@
-#### Trabalho da disciplina: Integração Contínua e DevOps<br>
+### Trabalho da disciplina: Integração Contínua e DevOps<br>
 #### Este documento descreve os passos necessários para a execução do trabalho da disciplina de Integração Contínua e DevOps.
 
 ### 1. Criação e publicação da imagem Docker
