@@ -1,4 +1,4 @@
-#### Trabalho da disciplina: Integração Contínua e DevOps<br>
+### Trabalho da disciplina: Integração Contínua e DevOps<br>
 #### Este documento descreve os passos necessários para a execução do trabalho da disciplina de Integração Contínua e DevOps.
 
 ### 1. Criação e publicação da imagem Docker
@@ -33,12 +33,6 @@ postgres-pod.yaml
 Crie um probe para a aplicação (Readiness ou Liveness).
 
 em contador-vendas-deployment.yaml
-spec:
-      containers:
-      - name: contador-vendas
-        image: alfecjo/ic-devops:1.7
-        ports:
-        - containerPort: 8080
         
         readinessProbe:
           httpGet:
