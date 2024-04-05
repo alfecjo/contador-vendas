@@ -1,13 +1,13 @@
-Trabalho da disciplina: Integração Contínua e DevOps
-Este documento descreve os passos necessários para a execução do trabalho da disciplina de Integração Contínua e DevOps.
+#Trabalho da disciplina: Integração Contínua e DevOps<br>
+##Este documento descreve os passos necessários para a execução do trabalho da disciplina de Integração Contínua e DevOps.
 
 1. Criação e publicação da imagem Docker
 Utilize o Docker para criar uma imagem personalizada de alguma aplicação previamente construída e publique a imagem no Dockerhub.
 
-docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .
+docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .<br>
 docker push alfecjo/bd-postgres:1.0
 
-docker build -t alfecjo/ic-devops:1.7 .
+docker build -t alfecjo/ic-devops:1.7 .<br>
 docker push alfecjo/ic-devops:1.7
 
 2. Subindo a imagem em um cluster Kubernetes

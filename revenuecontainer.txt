@@ -131,30 +131,23 @@ Para acessar sua aplicação, você pode usar o IP e a porta do serviço definid
 Opção 1 - Para encerrar os recursos implantados no Kubernetes, você pode usar o comando
  kubectl delete seguido dos arquivos YAML correspondentes aos recursos que você
  implantou.
+ (igual a Opção 2 + -f e .yaml para todos!)
  kubectl delete -f contador-vendas-deployment.yaml
- kubectl delete -f contador-vendas-service.yaml
- kubectl delete -f postgres-pod.yaml
- kubectl delete -f postgres-service.yaml
- kubectl delete -f postgres-statefulset.yaml
- kubectl delete -f prometheus-deployment.yaml
- kubectl delete -f prometheus-pvc.yaml
- kubectl delete -f prometheus-service.yaml
- kubectl delete -f grafana-deployment.yaml
- kubectl delete -f grafana-pvc.yaml
- kubectl delete -f grafana-service.yaml
+ ...
 
-Opção 2 -  Para encerrar recursos individualmente. Aqui está como você pode fazer: 
+Opção 2 - Para encerrar recursos individualmente: 
 kubectl delete deployment contador-vendas
 kubectl delete service contador-vendas-service
 kubectl delete service postgres-service
 kubectl delete pod postgres
 kubectl delete statefulset postgres-statefulset
-kubectl delete -f prometheus-deployment
- kubectl delete -f prometheus-pvc
- kubectl delete -f prometheus-service
- kubectl delete -f grafana-deployment
- kubectl delete -f grafana-pvc
- kubectl delete -f grafana-service
+kubectl delete pvc postgres-data-postgres-statefulset-0
+kubectl delete deployment prometheus-deployment
+kubectl delete pvc prometheus-data
+kubectl delete service prometheus-service
+kubectl delete deployment grafana-deployment
+kubectl delete pvc grafana-data
+kubectl delete service grafana-service
 
 Isso irá excluir os recursos que foram implantados anteriormente no cluster Kubernetes.
 Certifique-se de estar no diretório correto onde os arquivos YAML estão localizados ou
