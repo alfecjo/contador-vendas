@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+spec:
+  selector:
+    app: grafana
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: NodePort  
+  # type: LoadBalancer Ou NodePort, dependendo do seu ambiente. Se você está executando seu
+  #  cluster Kubernetes em um ambiente de nuvem pública ou em uma configuração onde deseja
+  #  que o tráfego seja distribuído automaticamente entre os nós do cluster e/ou precisa de
+  #  um endereço IP fixo e acessível externamente, você deve usar type: LoadBalancer. Se você
+  #  está executando em um ambiente onde não precisa desses recursos e quer uma solução mais 
+  #  simples, type: NodePort pode ser suficiente.
