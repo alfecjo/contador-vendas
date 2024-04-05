@@ -24,9 +24,9 @@ contador-vendas-service.yaml
 ## c. Configuração do banco de dados
 Para aplicações que fazem uso de banco de dados, crie um POD com o mesmo e deixe acessível através do ClusterIP.
 
-postgres-statefulSet.yaml
-postgres-service.yaml
-(quando você define um serviço sem especificar explicitamente o tipo, o tipo padrão é ClusterIP.)
+postgres-statefulSet.yaml<br>
+postgres-service.yaml<br>
+(quando você define um serviço sem especificar explicitamente o tipo, o tipo padrão é ClusterIP.)<br>
 postgres-pod.yaml
 
 ## d. Probe para a aplicação
@@ -57,18 +57,18 @@ spec:
           failureThreshold: 1
 
 ### 3. Estrutura de monitoramento com Prometheus e Grafana
-a. Configuração do Prometheus
+## a. Configuração do Prometheus
 Utilize um PVC para escrever os dados do Prometheus de maneira persistente.
 
-prometheus-pvc.yaml
-prometheus-deployment.yaml
+prometheus-pvc.yaml<br>
+prometheus-deployment.yaml<br>
 prometheus-service.yaml
 
 ## b. Configuração do Grafana
 Apenas o Grafana deverá ficar acessível para fora do cluster.
 
-grafana-pvc.yaml
-grafana-deployment.yaml
+grafana-pvc.yaml<br>
+grafana-deployment.yaml<br>
 grafana-service.yaml
 
 ## c. Criação de dashboards do Grafana
