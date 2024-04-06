@@ -68,7 +68,9 @@ grafana-service.yaml
 ## c. Criação de dashboards do Grafana
 Crie dashboards do Grafana que exponham dados sensíveis da sua aplicação (memória, CPU, etc...).
 
-![Nome do Dashboard](dashboard.gif)
+![Dashboard](dashboard.gif)
+![Dashboard](dashboard.jpg)
+
 
 ### 4. Pipeline de entrega do projeto com Jenkins
 Utilize o Jenkins ou qualquer outra ferramenta para criar um pipeline de entrega do projeto.
