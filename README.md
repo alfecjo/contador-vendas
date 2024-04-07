@@ -44,7 +44,7 @@ Para aplicações que fazem uso de banco de dados, crie um POD com o mesmo e dei
 em: /contador-vendas/manifests<br>
 postgres-statefulSet.yaml<br>
 postgres-service.yaml<br>
-# Por estar definindo diretamente um Pod (kind: Pod) para o banco de dados PostgreSQL. Este Pod será acessível apenas internamente dentro do cluster Kubernetes e não precisará de um ClusterIP para expor o serviço.<br>
+#### Por estar definindo diretamente um Pod (kind: Pod) para o banco de dados PostgreSQL. Este Pod será acessível apenas internamente dentro do cluster Kubernetes e não precisará de um ClusterIP para expor o serviço.<br>
 postgres-pod.yaml<br>
 ![ClusterIP](pod-clusterip.jpg)
 
