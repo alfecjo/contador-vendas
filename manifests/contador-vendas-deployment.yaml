@@ -24,7 +24,6 @@ spec:
           initialDelaySeconds: 35
           periodSeconds: 10
           failureThreshold: 3
-
         livenessProbe:
           httpGet:
             path: /actuator/health
