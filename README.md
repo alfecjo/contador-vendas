@@ -81,22 +81,23 @@ Utilize um PVC para escrever os dados do Prometheus de maneira persistente.
 em: /contador-vendas/manifests<br>
 prometheus-pvc.yaml<br>
 prometheus-deployment.yaml<br>
-prometheus-service.yaml
+prometheus-service.yaml<br>
+#### Ao configurar um PVC para o Prometheus, fica garantido que os dados coletados e armazenados pelo Prometheus sejam mantidos em um local persistente, facilitando a recuperação de dados em caso de falhas ou reinicializações.
 
 ## b. Configuração do Grafana
 Apenas o Grafana deverá ficar acessível para fora do cluster.
 
-em: /contador-vendas/manifests
+em: /contador-vendas/manifests<br>
 grafana-pvc.yaml<br>
 grafana-deployment.yaml<br>
-grafana-service.yaml
+grafana-service.yaml<br>
+#### Ao configurar um PVC para o Grafana, fica garantido que as configurações, dashboards personalizados e outras informações do Grafana sejam mantidos de forma persistente, mesmo que o contêiner seja reiniciado ou atualizado.
 
 ## c. Criação de dashboards do Grafana
 Crie dashboards do Grafana que exponham dados sensíveis da sua aplicação (memória, CPU, etc...).
 
 ![Dashboard](dashboard.gif)
 ![Dashboard](dashboard.jpg)
-
 
 ### 4. Pipeline de entrega do projeto com Jenkins
 Utilize o Jenkins ou qualquer outra ferramenta para criar um pipeline de entrega do projeto.
