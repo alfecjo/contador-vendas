@@ -4,9 +4,9 @@
 ### 1. Criação e publicação da imagem Docker
 Utilize o Docker para criar uma imagem personalizada de alguma aplicação previamente construída e publique a imagem no Dockerhub.
 
-em: /contador-vendas
+em: /contador-vendas<br>
 docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .<br>
-docker push alfecjo/bd-postgres:1.0
+docker push alfecjo/bd-postgres:1.0<br>
 
 docker build -t alfecjo/ic-devops:1.0 .<br>
 docker push alfecjo/ic-devops:1.0
@@ -34,13 +34,15 @@ kubectl apply -f grafana-service.yaml<br>
 Exponha a aplicação de forma que fique acessível fora do cluster usando NodePort.
 
 em: /contador-vendas/manifests<br>
-contador-vendas-service.yaml
+contador-vendas-service.yaml<br>
+![NodePort](nodeport.jpg)
 
 ## c. Configuração do banco de dados
 Para aplicações que fazem uso de banco de dados, crie um POD com o mesmo e deixe acessível através do ClusterIP.
 
 em: /contador-vendas/manifests<br>
 postgres-statefulSet.yaml<br>
+
 postgres-service.yaml<br>
 (quando você define um serviço sem especificar explicitamente o tipo, o tipo padrão é ClusterIP.)<br>
 postgres-pod.yaml
