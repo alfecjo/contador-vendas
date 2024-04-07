@@ -32,24 +32,18 @@ exit
 exit
 mvn test
 
-##### mudar de localhost para postgres o domínio no application.properties
-Para local:
-mvn clean package
+##### Ver antes o application.properties..
 
-Para prod:
-mvn clean package -Pprod -DskipTests
+mvn clean package -DskipTests
 
-Para dev:
-mvn clean package -Pdev -DskipTests
-
-docker build -t alfecjo/ic-devops:1.7 .
-docker push alfecjo/ic-devops:1.7
+docker build -t alfecjo/ic-devops:1.0 .
+docker push alfecjo/ic-devops:1.0
 docker run --name ic-devops -p 8080:8080 -d --network net-singular alfecjo/ic-devops:1.7
 docker logs e51ee53543abXXXXXXX
 
 2. Executando o Docker Compose...
 docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .
-docker build -t alfecjo/ic-devops:1.7 .
+docker build -t alfecjo/ic-devops:1.0 .
 docker-compose up
 
 3. Executando pelo Kubernetes
@@ -62,11 +56,11 @@ docker-compose up
 
 Execute o seguinte comando para implantar os recursos no Kubernetes NESTA ORDEM:
 
+kubectl apply -f postgres-statefulset.yaml
+kubectl get statefulset
 kubectl apply -f postgres-service.yaml
 kubectl apply -f postgres-pod.yaml
 kubectl get pod -l app=postgres
-kubectl apply -f postgres-statefulset.yaml
-kubectl get statefulset
 kubectl exec -it postgres -- bash
 psql -U postgres -d master
 \dt
@@ -90,6 +84,17 @@ kubectl apply -f grafana-deployment.yaml
 kubectl describe pod
 kubectl apply -f grafana-service.yaml
 _____________________________________________________________________________________________
+(kubectl port-forward service/prometheus-service 9090:9090)
+D:\VSCodeWork\contador-vendas (main)                        
+λ kubectl port-forward service/prometheus-service 9090:9090 
+Forwarding from 127.0.0.1:9090 -> 9090                      
+Forwarding from [::1]:9090 -> 9090                          
+Handling connection for 9090                                
+Handling connection for 9090                                
+
+no Prometheus usei essa url
+http://prometheus-service:9090
+
 Para localizar a porta que a aplicação está executando:
 kubectl get svc contador-vendas-service
 

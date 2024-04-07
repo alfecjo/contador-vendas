@@ -1,29 +1,45 @@
+### Ao Instituto Infnet - Prof. Leonardo Glória.. (2024-04-14)
 ### Trabalho da disciplina: Integração Contínua e DevOps<br>
-#### Este documento descreve os passos necessários para a execução do trabalho da disciplina de Integração Contínua e DevOps.
 
 ### 1. Criação e publicação da imagem Docker
 Utilize o Docker para criar uma imagem personalizada de alguma aplicação previamente construída e publique a imagem no Dockerhub.
 
+em: /contador-vendas
 docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .<br>
 docker push alfecjo/bd-postgres:1.0
 
-docker build -t alfecjo/ic-devops:1.7 .<br>
-docker push alfecjo/ic-devops:1.7
+docker build -t alfecjo/ic-devops:1.0 .<br>
+docker push alfecjo/ic-devops:1.0
 
 ### 2. Subindo a imagem em um cluster Kubernetes
 ## a. Deployment
 Suba a aplicação com 4 réplicas utilizando um Deployment.
 
-contador-vendas-deployment.yaml
+em: /contador-vendas/manifests<br>
+kubectl apply -f postgres-statefulset.yaml<br>
+kubectl apply -f postgres-service.yaml<br>
+kubectl apply -f postgres-pod.yaml<br>
+kubectl apply -f contador-vendas-deployment.yaml<br>
+kubectl apply -f contador-vendas-service.yaml<br>
+kubectl apply -f prometheus-pvc.yaml<br>
+kubectl apply -f prometheus-deployment.yaml<br>
+kubectl apply -f prometheus-service.yaml<br>
+kubectl apply -f grafana-pvc.yaml<br>
+kubectl apply -f grafana-deployment.yaml<br>
+kubectl apply -f grafana-service.yaml<br>
+
+![Requisições](pesquisas.jpg)
 
 ## b. Expondo a aplicação
 Exponha a aplicação de forma que fique acessível fora do cluster usando NodePort.
 
+em: /contador-vendas/manifests<br>
 contador-vendas-service.yaml
 
 ## c. Configuração do banco de dados
 Para aplicações que fazem uso de banco de dados, crie um POD com o mesmo e deixe acessível através do ClusterIP.
 
+em: /contador-vendas/manifests<br>
 postgres-statefulSet.yaml<br>
 postgres-service.yaml<br>
 (quando você define um serviço sem especificar explicitamente o tipo, o tipo padrão é ClusterIP.)<br>
@@ -32,13 +48,14 @@ postgres-pod.yaml
 ## d. Probe para a aplicação
 Crie um probe para a aplicação (Readiness ou Liveness).
 
-em contador-vendas-deployment.yaml
+em: /contador-vendas/manifests/contador-vendas-deployment.yaml<br>
+
         
         readinessProbe:
           httpGet:
             path: /health
             port: 8080
-          initialDelaySeconds: 5
+          initialDelaySeconds: 35
           periodSeconds: 10
           failureThreshold: 3
 
@@ -54,6 +71,7 @@ em contador-vendas-deployment.yaml
 ## a. Configuração do Prometheus
 Utilize um PVC para escrever os dados do Prometheus de maneira persistente.
 
+em: /contador-vendas/manifests<br>
 prometheus-pvc.yaml<br>
 prometheus-deployment.yaml<br>
 prometheus-service.yaml
@@ -61,6 +79,7 @@ prometheus-service.yaml
 ## b. Configuração do Grafana
 Apenas o Grafana deverá ficar acessível para fora do cluster.
 
+em: /contador-vendas/manifests
 grafana-pvc.yaml<br>
 grafana-deployment.yaml<br>
 grafana-service.yaml
