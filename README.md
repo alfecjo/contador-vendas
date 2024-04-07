@@ -9,7 +9,8 @@ docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .<br>
 docker push alfecjo/bd-postgres:1.0<br>
 
 docker build -t alfecjo/ic-devops:1.0 .<br>
-docker push alfecjo/ic-devops:1.0
+docker push alfecjo/ic-devops:1.0<br>
+![DockerHub](imgdockerhub.jpg)
 
 ### 2. Subindo a imagem em um cluster Kubernetes
 ## a. Deployment
