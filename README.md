@@ -53,26 +53,26 @@ Crie um probe para a aplicação (Readiness ou Liveness).
 
 em: /contador-vendas/manifests/contador-vendas-deployment.yaml<br>
 
-spec:
-      containers:
-      - name: contador-vendas
-        image: alfecjo/ic-devops:1.0
-        ports:
-        - containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 35
-          periodSeconds: 10
-          failureThreshold: 3
-        livenessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          failureThreshold: 1
+      spec:
+            containers:
+            - name: contador-vendas
+              image: alfecjo/ic-devops:1.0
+              ports:
+              - containerPort: 8080
+              readinessProbe:
+                httpGet:
+                  path: /actuator/health
+                  port: 8080
+                initialDelaySeconds: 35
+                periodSeconds: 10
+                failureThreshold: 3
+              livenessProbe:
+                httpGet:
+                  path: /actuator/health
+                  port: 8080
+                initialDelaySeconds: 30
+                periodSeconds: 10
+                failureThreshold: 1
 
 ### 3. Estrutura de monitoramento com Prometheus e Grafana
 ## a. Configuração do Prometheus
