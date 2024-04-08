@@ -51,7 +51,8 @@ postgres-pod.yaml<br>
 ## d. Probe para a aplicação
 Crie um probe para a aplicação (Readiness ou Liveness).
 
-em: /contador-vendas/manifests/contador-vendas-deployment.yaml<br>
+em: /contador-vendas/manifests<br>
+contador-vendas-deployment.yaml<br>
 
       spec:
             containers:
@@ -96,8 +97,7 @@ grafana-service.yaml<br>
 ## c. Criação de dashboards do Grafana
 Crie dashboards do Grafana que exponham dados sensíveis da sua aplicação (memória, CPU, etc...).
 
-![Dashboard](dashboard.gif)
-![Dashboard](dashboard.jpg)
+![Dashboard](dashboard-graphics.gif)
 
 ### 4. Pipeline de entrega do projeto com Jenkins
 Utilize o Jenkins ou qualquer outra ferramenta para criar um pipeline de entrega do projeto.

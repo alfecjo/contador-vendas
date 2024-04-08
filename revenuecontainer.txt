@@ -95,6 +95,24 @@ Handling connection for 9090
 no Prometheus usei essa url
 http://prometheus-service:9090
 
+kubectl get events
+
+_____________________________________________________________________________________________
+acessando o grafana
+kubectl get svc grafana-service
+
+                                                                              
+:\VSCodeWork\contador-vendas\manifests (main)                                 
+ kubectl get svc grafana-service                                              
+AME              TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE   
+rafana-service   NodePort   10.110.51.52   <none>        80:30735/TCP   9h    
+                                                                              
+No Chrome
+http://localhost:30735/login
+admin
+admin
+_____________________________________________________________________________________________
+
 Para localizar a porta que a aplicação está executando:
 kubectl get svc contador-vendas-service
 
