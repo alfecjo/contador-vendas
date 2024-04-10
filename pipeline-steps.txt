@@ -1,0 +1,63 @@
+Step	Arguments			Status
+Start of Pipeline - (2 min 27 seg in block)			
+node - (2 min 26 seg in block)			
+node block - (2 min 26 seg in block)			
+timeout - (2 min 26 seg in block)			
+timeout block - (2 min 26 seg in block)			
+stage - (0,21 seg in block)	Declarative: Tool Install		
+stage block (Declarative: Tool Install) - (0,13 seg in block)			
+tool - (40 ms in self)	mvn		
+envVarsForTool - (55 ms in self)			
+withEnv - (2 min 26 seg in block)	M2_HOME, MAVEN_HOME, PATH+MAVEN		
+withEnv block - (2 min 26 seg in block)			
+stage - (2,9 seg in block)	Initialize		
+stage block (Initialize) - (2,8 seg in block)			
+tool - (40 ms in self)	mvn		
+envVarsForTool - (56 ms in self)			
+withEnv - (2,6 seg in block)	M2_HOME, MAVEN_HOME, PATH+MAVEN		
+withEnv block - (2,6 seg in block)			
+sh - (2,5 seg in self)	echo "=${PATH}" echo "M2_HOME = ${M2_HOME}"		
+stage - (8,9 seg in block)	Git CheckOut		
+stage block (Git CheckOut) - (8,8 seg in block)			
+tool - (37 ms in self)	mvn		
+envVarsForTool - (0,11 seg in self)			
+withEnv - (8,6 seg in block)	M2_HOME, MAVEN_HOME, PATH+MAVEN		
+withEnv block - (8,5 seg in block)			
+git - (5,8 seg in self)			
+script - (2,7 seg in block)			
+script block - (2,6 seg in block)			
+sh - (2,5 seg in self)	git rev-parse --short HEAD		
+echo - (10 ms in self)	Image version: bd67a1e		
+stage - (44 seg in block)	Stage Build		
+stage block (Stage Build) - (44 seg in block)			
+tool - (45 ms in self)	mvn		
+envVarsForTool - (60 ms in self)			
+withEnv - (44 seg in block)	M2_HOME, MAVEN_HOME, PATH+MAVEN		
+withEnv block - (44 seg in block)			
+bat (Build with Maven) - (44 seg in self)	cmd.exe /C "C:\Users\user\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\mvn\bin\mvn.cmd clean package && exit %%ERRORLEVEL%%"		
+stage - (1 min 5 seg in block)	Build Docker Image App contador-vendas		
+stage block (Build Docker Image App contador-vendas) - (1 min 5 seg in block)			
+tool - (50 ms in self)	mvn		
+envVarsForTool - (73 ms in self)			
+withEnv - (1 min 5 seg in block)	M2_HOME, MAVEN_HOME, PATH+MAVEN		
+withEnv block - (1 min 5 seg in block)			
+script - (1 min 5 seg in block)			
+script block - (1 min 4 seg in block)			
+echo - (21 ms in self)	Image version: bd67a1e		
+sh - (14 seg in self)	docker build -t alfecjo/ic-devops:bd67a1e .		
+echo - (15 ms in self)	Rename to latest		
+sh - (5,9 seg in self)	docker tag alfecjo/ic-devops:bd67a1e alfecjo/ic-devops:latest		
+sh - (44 seg in self)	docker push alfecjo/ic-devops:latest		
+stage - (24 seg in block)	Build Docker Image BD master in Postgres		
+stage block (Build Docker Image BD master in Postgres) - (24 seg in block)			
+tool - (95 ms in self)	mvn		
+envVarsForTool - (81 ms in self)			
+withEnv - (23 seg in block)	M2_HOME, MAVEN_HOME, PATH+MAVEN		
+withEnv block - (23 seg in block)			
+script - (23 seg in block)			
+script block - (23 seg in block)			
+echo - (27 ms in self)	Image version: bd67a1e		
+sh - (9,4 seg in self)	docker build -t alfecjo/bd-postgres:bd67a1e -f Dockerfile.postgres .		
+echo - (16 ms in self)	Rename to latest		
+sh - (5,3 seg in self)	docker tag alfecjo/bd-postgres:bd67a1e alfecjo/bd-postgres:latest		
+sh - (8,5 seg in self)	docker push alfecjo/bd-postgres:latest		

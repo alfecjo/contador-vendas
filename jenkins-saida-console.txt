@@ -1,3 +1,4 @@
+Saída do console
 Iniciado pelo usuário Antonio Carlos Ferreira de Almeida
 [Pipeline] Start of Pipeline
 [Pipeline] node
@@ -15,7 +16,22 @@ Timeout set to expire in -1 hora(a) 0 min
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] stage
-[Pipeline] { (Build)
+[Pipeline] { (Initialize)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ echo '=/mingw64/bin:/usr/bin:/c/Users/user/bin:/c/Users/user/.jenkins/tools/hudson.tasks.Maven_MavenInstallation/mvn/bin:/c/Users/user/.jenkins/tools/hudson.tasks.Maven_MavenInstallation/mvn/bin:/d/cmder/vendor/git-for-windows/cmd:/d/cmder/vendor/conemu-maximus5/ConEmu/Scripts:/d/cmder/vendor/conemu-maximus5:/d/cmder/vendor/conemu-maximus5/ConEmu:/c/Program Files/Java/openjdk-17/bin:/c/Program Files/Common Files/Oracle/Java/javapath:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit:/c/Program Files/Java/openjdk-17/bin:/c/Program Files/Java/openjdk-11.0.8/bin:/c/Program Files/apache-maven-3.9.3/bin:/c/Program Files/spring-3.1.1/bin:/c/Program Files/Amazon/AWSCLIV2:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/nodejs:/c/Program Files/Java/jdk-21:/bin:/c/Program Files/MySQL/MySQL Shell 8.0/bin:/c/Users/user/AppData/Local/Microsoft/WindowsApps:/c/Program Files/JetBrains/PyCharm Community Edition 2022.2.2/bin:/c/Program Files/JetBrains/IntelliJ IDEA 2022.3.3/bin:/c/Program Files/MySQL/MySQL Workbench 8.0:/c/Program Files/heroku/bin:/c/Users/user/AppData/Roaming/npm:/d/Microsoft VS Code/bin:/d/cmder/vendor/git-for-windows/mingw64/bin:/d/cmder/vendor/git-for-windows/usr/bin:/d/cmder/vendor/bin:/d/cmder'
+=/mingw64/bin:/usr/bin:/c/Users/user/bin:/c/Users/user/.jenkins/tools/hudson.tasks.Maven_MavenInstallation/mvn/bin:/c/Users/user/.jenkins/tools/hudson.tasks.Maven_MavenInstallation/mvn/bin:/d/cmder/vendor/git-for-windows/cmd:/d/cmder/vendor/conemu-maximus5/ConEmu/Scripts:/d/cmder/vendor/conemu-maximus5:/d/cmder/vendor/conemu-maximus5/ConEmu:/c/Program Files/Java/openjdk-17/bin:/c/Program Files/Common Files/Oracle/Java/javapath:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit:/c/Program Files/Java/openjdk-17/bin:/c/Program Files/Java/openjdk-11.0.8/bin:/c/Program Files/apache-maven-3.9.3/bin:/c/Program Files/spring-3.1.1/bin:/c/Program Files/Amazon/AWSCLIV2:/c/Program Files/Docker/Docker/resources/bin:/c/Program Files/nodejs:/c/Program Files/Java/jdk-21:/bin:/c/Program Files/MySQL/MySQL Shell 8.0/bin:/c/Users/user/AppData/Local/Microsoft/WindowsApps:/c/Program Files/JetBrains/PyCharm Community Edition 2022.2.2/bin:/c/Program Files/JetBrains/IntelliJ IDEA 2022.3.3/bin:/c/Program Files/MySQL/MySQL Workbench 8.0:/c/Program Files/heroku/bin:/c/Users/user/AppData/Roaming/npm:/d/Microsoft VS Code/bin:/d/cmder/vendor/git-for-windows/mingw64/bin:/d/cmder/vendor/git-for-windows/usr/bin:/d/cmder/vendor/bin:/d/cmder
++ echo 'M2_HOME = C:\Users\user\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\mvn'
+M2_HOME = C:\Users\user\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\mvn
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Git CheckOut)
 [Pipeline] tool
 [Pipeline] envVarsForTool
 [Pipeline] withEnv
@@ -23,28 +39,36 @@ Timeout set to expire in -1 hora(a) 0 min
 [Pipeline] git
 The recommended git tool is: NONE
 No credentials specified
- > git.exe rev-parse --resolve-git-dir C:\Users\user\.jenkins\workspace\contador-vendas-pipeline\.git # timeout=10
+ > C:\Program Files\Git\bin\git.exe rev-parse --resolve-git-dir C:\Users\user\.jenkins\workspace\contador-vendas-pipeline\.git # timeout=10
 Fetching changes from the remote Git repository
- > git.exe config remote.origin.url https://github.com/alfecjo/contador-vendas.git # timeout=10
+ > C:\Program Files\Git\bin\git.exe config remote.origin.url https://github.com/alfecjo/contador-vendas.git # timeout=10
 Fetching upstream changes from https://github.com/alfecjo/contador-vendas.git
- > git.exe --version # timeout=10
- > git --version # 'git version 2.42.0.windows.2'
- > git.exe fetch --tags --force --progress -- https://github.com/alfecjo/contador-vendas.git +refs/heads/*:refs/remotes/origin/* # timeout=10
- > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
-Checking out Revision 364863f962bd1bf50ecb8304ac110152075b8cae (refs/remotes/origin/main)
- > git.exe config core.sparsecheckout # timeout=10
- > git.exe checkout -f 364863f962bd1bf50ecb8304ac110152075b8cae # timeout=10
- > git.exe branch -a -v --no-abbrev # timeout=10
- > git.exe branch -D main # timeout=10
- > git.exe checkout -b main 364863f962bd1bf50ecb8304ac110152075b8cae # timeout=10
+ > C:\Program Files\Git\bin\git.exe --version # timeout=10
+ > git --version # 'git version 2.44.0.windows.1'
+ > C:\Program Files\Git\bin\git.exe fetch --tags --force --progress -- https://github.com/alfecjo/contador-vendas.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\bin\git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision bd67a1ef043435058913ff0839159b42a9fcc90b (refs/remotes/origin/main)
+ > C:\Program Files\Git\bin\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\bin\git.exe checkout -f bd67a1ef043435058913ff0839159b42a9fcc90b # timeout=10
+ > C:\Program Files\Git\bin\git.exe branch -a -v --no-abbrev # timeout=10
+ > C:\Program Files\Git\bin\git.exe branch -D main # timeout=10
+ > C:\Program Files\Git\bin\git.exe checkout -b main bd67a1ef043435058913ff0839159b42a9fcc90b # timeout=10
 Commit message: "Test Jenkins"
- > git.exe rev-list --no-walk 364863f962bd1bf50ecb8304ac110152075b8cae # timeout=10
+ > C:\Program Files\Git\bin\git.exe rev-list --no-walk bd67a1ef043435058913ff0839159b42a9fcc90b # timeout=10
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ git rev-parse --short HEAD
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] echo
+Image version: bd67a1e
 [Pipeline] }
 [Pipeline] // withEnv
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
-[Pipeline] { (Deploy)
+[Pipeline] { (Stage Build)
 [Pipeline] tool
 [Pipeline] envVarsForTool
 [Pipeline] withEnv
@@ -84,9 +108,9 @@ CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running com.singular.contadorvendas.ContadorVendasTests
-23:23:46.861 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.singular.contadorvendas.ContadorVendasTests]: ContadorVendasTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:23:47.096 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.singular.contadorvendas.ContadorVendas for test class com.singular.contadorvendas.ContadorVendasTests
-23:23:47.501 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+12:35:35.160 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.singular.contadorvendas.ContadorVendasTests]: ContadorVendasTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:35:35.314 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.singular.contadorvendas.ContadorVendas for test class com.singular.contadorvendas.ContadorVendasTests
+12:35:35.625 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -96,29 +120,29 @@ CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.4)
 
-2024-04-09T23:23:48.229-03:00  INFO 21280 --- [contadorvendas] [           main] c.s.contadorvendas.ContadorVendasTests   : Starting ContadorVendasTests using Java 17.0.5 with PID 21280 (started by user in C:\Users\user\.jenkins\workspace\contador-vendas-pipeline)
-2024-04-09T23:23:48.232-03:00  INFO 21280 --- [contadorvendas] [           main] c.s.contadorvendas.ContadorVendasTests   : No active profile set, falling back to 1 default profile: "default"
-2024-04-09T23:23:48.351-03:00 DEBUG 21280 --- [contadorvendas] [           main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@3ecedf21
-2024-04-09T23:23:50.931-03:00  INFO 21280 --- [contadorvendas] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-04-09T23:23:51.137-03:00  INFO 21280 --- [contadorvendas] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 169 ms. Found 1 JPA repository interface.
-2024-04-09T23:23:52.728-03:00  INFO 21280 --- [contadorvendas] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-09T23:23:53.595-03:00  INFO 21280 --- [contadorvendas] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1510b9a2
-2024-04-09T23:23:53.599-03:00  INFO 21280 --- [contadorvendas] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-04-09T23:23:53.904-03:00  INFO 21280 --- [contadorvendas] [           main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
-2024-04-09T23:23:53.905-03:00  INFO 21280 --- [contadorvendas] [           main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
-2024-04-09T23:23:53.907-03:00  INFO 21280 --- [contadorvendas] [           main] o.f.c.internal.license.VersionPrinter    : 
-2024-04-09T23:23:53.969-03:00  INFO 21280 --- [contadorvendas] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/master (PostgreSQL 16.1)
-2024-04-09T23:23:53.992-03:00  WARN 21280 --- [contadorvendas] [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
-2024-04-09T23:23:54.122-03:00  INFO 21280 --- [contadorvendas] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.093s)
-2024-04-09T23:23:54.154-03:00  INFO 21280 --- [contadorvendas] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
-2024-04-09T23:23:54.162-03:00  INFO 21280 --- [contadorvendas] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2024-04-09T23:23:54.533-03:00  INFO 21280 --- [contadorvendas] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-04-09T23:23:54.750-03:00  INFO 21280 --- [contadorvendas] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-04-09T23:23:54.866-03:00  INFO 21280 --- [contadorvendas] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-04-09T23:23:55.686-03:00  INFO 21280 --- [contadorvendas] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-04-09T23:23:55.879-03:00  WARN 21280 --- [contadorvendas] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-04-09T23:23:57.636-03:00  INFO 21280 --- [contadorvendas] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-04-09T23:23:57.721-03:00  INFO 21280 --- [contadorvendas] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-10T12:35:36.239-03:00  INFO 19728 --- [contadorvendas] [           main] c.s.contadorvendas.ContadorVendasTests   : Starting ContadorVendasTests using Java 17.0.5 with PID 19728 (started by user in C:\Users\user\.jenkins\workspace\contador-vendas-pipeline)
+2024-04-10T12:35:36.241-03:00  INFO 19728 --- [contadorvendas] [           main] c.s.contadorvendas.ContadorVendasTests   : No active profile set, falling back to 1 default profile: "default"
+2024-04-10T12:35:36.295-03:00 DEBUG 19728 --- [contadorvendas] [           main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@3ecedf21
+2024-04-10T12:35:38.005-03:00  INFO 19728 --- [contadorvendas] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-10T12:35:38.117-03:00  INFO 19728 --- [contadorvendas] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 1 JPA repository interface.
+2024-04-10T12:35:39.306-03:00  INFO 19728 --- [contadorvendas] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-10T12:35:40.093-03:00  INFO 19728 --- [contadorvendas] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2a8f8555
+2024-04-10T12:35:40.098-03:00  INFO 19728 --- [contadorvendas] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-10T12:35:40.345-03:00  INFO 19728 --- [contadorvendas] [           main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.22.3 by Redgate
+2024-04-10T12:35:40.346-03:00  INFO 19728 --- [contadorvendas] [           main] o.f.c.internal.license.VersionPrinter    : See release notes here: https://rd.gt/416ObMi
+2024-04-10T12:35:40.346-03:00  INFO 19728 --- [contadorvendas] [           main] o.f.c.internal.license.VersionPrinter    : 
+2024-04-10T12:35:40.405-03:00  INFO 19728 --- [contadorvendas] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/master (PostgreSQL 16.1)
+2024-04-10T12:35:40.421-03:00  WARN 19728 --- [contadorvendas] [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 16.1 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 15.
+2024-04-10T12:35:40.639-03:00  INFO 19728 --- [contadorvendas] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.069s)
+2024-04-10T12:35:40.670-03:00  INFO 19728 --- [contadorvendas] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 1
+2024-04-10T12:35:40.681-03:00  INFO 19728 --- [contadorvendas] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2024-04-10T12:35:41.071-03:00  INFO 19728 --- [contadorvendas] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-10T12:35:41.308-03:00  INFO 19728 --- [contadorvendas] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-10T12:35:41.431-03:00  INFO 19728 --- [contadorvendas] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-10T12:35:42.422-03:00  INFO 19728 --- [contadorvendas] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-10T12:35:42.565-03:00  WARN 19728 --- [contadorvendas] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-10T12:35:44.171-03:00  INFO 19728 --- [contadorvendas] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-10T12:35:44.278-03:00  INFO 19728 --- [contadorvendas] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 Hibernate: 
     select
         ve1_0.num_venda,
@@ -134,15 +158,15 @@ Hibernate:
         ve1_0.vendedor 
     from
         vendas ve1_0
-2024-04-09T23:24:00.192-03:00  WARN 21280 --- [contadorvendas] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-04-09T23:24:00.612-03:00 DEBUG 21280 --- [contadorvendas] [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
-2024-04-09T23:24:01.249-03:00 DEBUG 21280 --- [contadorvendas] [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2024-04-09T23:24:01.390-03:00 DEBUG 21280 --- [contadorvendas] [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2024-04-09T23:24:01.550-03:00 DEBUG 21280 --- [contadorvendas] [           main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
-2024-04-09T23:24:02.963-03:00  INFO 21280 --- [contadorvendas] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoint(s) beneath base path '/actuator'
-2024-04-09T23:24:03.174-03:00  INFO 21280 --- [contadorvendas] [           main] c.s.contadorvendas.ContadorVendasTests   : Started ContadorVendasTests in 15.699 seconds (process running for 17.762)
+2024-04-10T12:35:46.680-03:00  WARN 19728 --- [contadorvendas] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-10T12:35:47.146-03:00 DEBUG 19728 --- [contadorvendas] [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : 8 mappings in 'requestMappingHandlerMapping'
+2024-04-10T12:35:47.641-03:00 DEBUG 19728 --- [contadorvendas] [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-04-10T12:35:47.764-03:00 DEBUG 19728 --- [contadorvendas] [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-04-10T12:35:47.887-03:00 DEBUG 19728 --- [contadorvendas] [           main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-04-10T12:35:49.106-03:00  INFO 19728 --- [contadorvendas] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoint(s) beneath base path '/actuator'
+2024-04-10T12:35:49.294-03:00  INFO 19728 --- [contadorvendas] [           main] c.s.contadorvendas.ContadorVendasTests   : Started ContadorVendasTests in 13.692 seconds (process running for 15.407)
 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.08 s -- in com.singular.contadorvendas.ContadorVendasTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.87 s -- in com.singular.contadorvendas.ContadorVendasTests
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -158,8 +182,8 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  30.697 s
-[INFO] Finished at: 2024-04-09T23:24:06-03:00
+[INFO] Total time:  26.548 s
+[INFO] Finished at: 2024-04-10T12:35:53-03:00
 [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 [Pipeline] // withEnv
@@ -173,9 +197,10 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 [Pipeline] {
 [Pipeline] script
 [Pipeline] {
-[Pipeline] bat (Build with Docker App)
-
-CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C "docker build -t alfecjo/ic-devops:1.0 ." 
+[Pipeline] echo
+Image version: bd67a1e
+[Pipeline] sh
++ docker build -t alfecjo/ic-devops:bd67a1e .
 #0 building with "default" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
@@ -189,49 +214,52 @@ CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C
 #3 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/library/amazoncorretto:17.0.10-al2023-headless
-#2 DONE 1.4s
+#2 DONE 1.6s
 
 #4 [internal] load .dockerignore
-#4 transferring context: 2B 0.0s done
+#4 transferring context: 2B done
 #4 DONE 0.0s
 
 #5 [1/3] FROM docker.io/library/amazoncorretto:17.0.10-al2023-headless@sha256:ec8d8cfbe3e86b56737db9b020eba4ff53cd0df120a60e8010acfa6db80d8f2b
 #5 DONE 0.0s
 
 #6 [internal] load build context
-#6 transferring context: 49.49MB 2.2s done
-#6 DONE 2.2s
+#6 transferring context: 49.49MB 2.1s done
+#6 DONE 2.1s
 
 #7 [2/3] WORKDIR /app
 #7 CACHED
 
 #8 [3/3] COPY target/contador-vendas-0.0.1-SNAPSHOT.jar /app
-#8 DONE 0.9s
+#8 DONE 1.0s
 
 #9 exporting to image
 #9 exporting layers
-#9 exporting layers 0.5s done
-#9 writing image sha256:cd63cc11f8d3894b5e0489cb98381fc78de6a4b887afa030e0c658df3a9d7241 done
-#9 naming to docker.io/alfecjo/ic-devops:1.0 0.0s done
-#9 DONE 0.5s
+#9 exporting layers 0.3s done
+#9 writing image sha256:1103cd69f71726d800e6989940448dede0eecd5f99a399653cdc42419247ec0e done
+#9 naming to docker.io/alfecjo/ic-devops:bd67a1e done
+#9 DONE 0.3s
 
-View build details: docker-desktop://dashboard/build/default/default/196ca04hskjea44z9lmdje1p7
+View build details: docker-desktop://dashboard/build/default/default/e5d0cgauz2aqgv5aoqdshar47
 
 What's Next?
   View a summary of image vulnerabilities and recommendations â†’ docker scout quickview
-[Pipeline] bat (Push with Docker App)
-
-CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C "docker push alfecjo/ic-devops:1.0" 
+[Pipeline] echo
+Rename to latest
+[Pipeline] sh
++ docker tag alfecjo/ic-devops:bd67a1e alfecjo/ic-devops:latest
+[Pipeline] sh
++ docker push alfecjo/ic-devops:latest
 The push refers to repository [docker.io/alfecjo/ic-devops]
-d6a15c116895: Preparing
+8733a4c3b999: Preparing
 49ff0f230a51: Preparing
 06623d2394e7: Preparing
 5b1e002ce429: Preparing
-06623d2394e7: Layer already exists
 49ff0f230a51: Layer already exists
+06623d2394e7: Layer already exists
 5b1e002ce429: Layer already exists
-d6a15c116895: Pushed
-1.0: digest: sha256:5619891e0591a319f0b59e3ce1896c5d072fc135f47f02ff1fb5c72a248952f2 size: 1159
+8733a4c3b999: Pushed
+latest: digest: sha256:55c2b2225572794c7b3061ba106f353da103c2353fe1d6aa0f4ecffcd20bf7bc size: 1159
 [Pipeline] }
 [Pipeline] // script
 [Pipeline] }
@@ -239,17 +267,18 @@ d6a15c116895: Pushed
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
-[Pipeline] { (Build Docker Image BD postgres)
+[Pipeline] { (Build Docker Image BD master in Postgres)
 [Pipeline] tool
 [Pipeline] envVarsForTool
 [Pipeline] withEnv
 [Pipeline] {
 [Pipeline] script
 [Pipeline] {
-[Pipeline] bat (Build with Docker BD)
-
-CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C "docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres ." 
-2024/04/09 23:26:08 http2: server: error reading preface from client //./pipe/docker_engine: file has already been closed
+[Pipeline] echo
+Image version: bd67a1e
+[Pipeline] sh
++ docker build -t alfecjo/bd-postgres:bd67a1e -f Dockerfile.postgres .
+2024/04/10 12:37:06 http2: server: error reading preface from client //./pipe/docker_engine: file has already been closed
 #0 building with "default" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile.postgres
@@ -263,79 +292,80 @@ CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C
 #3 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/library/postgres:latest
-#2 DONE 2.4s
+#2 DONE 1.7s
 
 #4 [internal] load .dockerignore
 #4 transferring context: 2B done
 #4 DONE 0.0s
 
-#5 [1/2] FROM docker.io/library/postgres:latest@sha256:6b841c8f6a819884207402f1209a8116844365df15fca8cf556fc54a24c70800
-#5 resolve docker.io/library/postgres:latest@sha256:6b841c8f6a819884207402f1209a8116844365df15fca8cf556fc54a24c70800
-#5 resolve docker.io/library/postgres:latest@sha256:6b841c8f6a819884207402f1209a8116844365df15fca8cf556fc54a24c70800 0.0s done
-#5 DONE 0.1s
+#5 [1/2] FROM docker.io/library/postgres:latest@sha256:5b061929fc072c5dacdab1f6df4868d4f049080694245c397679117deb97b382
+#5 DONE 0.0s
 
 #6 [internal] load build context
 #6 transferring context: 4.01kB 0.0s done
-#6 DONE 0.1s
+#6 DONE 0.0s
 
 #7 [2/2] COPY src/main/resources/db/migration/V1__create-table-vendas.sql /docker-entrypoint-initdb.d/
 #7 CACHED
 
 #8 exporting to image
 #8 exporting layers done
-#8 writing image sha256:187fb60fb6fa76e353c75556222fa39d982060975c124e438a05ad60838bdc55 done
-#8 naming to docker.io/alfecjo/bd-postgres:1.0 done
+#8 writing image sha256:f16c55b9abd021d85a971fb765e7ebf7772288f311413528c4fa79e84597b249 done
+#8 naming to docker.io/alfecjo/bd-postgres:bd67a1e 0.0s done
 #8 DONE 0.0s
 
-View build details: docker-desktop://dashboard/build/default/default/e3cvv79wbz41rtzrazphfi4kv
+View build details: docker-desktop://dashboard/build/default/default/vahto49g2u81hfzkibr1t225l
 
 What's Next?
   View a summary of image vulnerabilities and recommendations â†’ docker scout quickview
-[Pipeline] bat (Push with Docker BD)
-
-CLINK C:\Users\user\.jenkins\workspace\contador-vendas-pipeline>cmd.exe /C "docker push alfecjo/bd-postgres:1.0" 
+[Pipeline] echo
+Rename to latest
+[Pipeline] sh
++ docker tag alfecjo/bd-postgres:bd67a1e alfecjo/bd-postgres:latest
+[Pipeline] sh
++ docker push alfecjo/bd-postgres:latest
 The push refers to repository [docker.io/alfecjo/bd-postgres]
-12149a4247ce: Preparing
-1a5db5fc09d1: Preparing
-44ef72c67da4: Preparing
-a03ae2f45899: Preparing
-acf89ed73193: Preparing
-8b989697200d: Preparing
-17c7143ec5ac: Preparing
-f4658e0538c1: Preparing
-f0fd3e52b8f5: Preparing
-5e92f76fe407: Preparing
-7a1a926b41ec: Preparing
-d0c5b1b578f0: Preparing
-6e73bb47a647: Preparing
-96160384c805: Preparing
-a483da8ab3e9: Preparing
-6e73bb47a647: Waiting
-96160384c805: Waiting
-a483da8ab3e9: Waiting
-f0fd3e52b8f5: Waiting
-5e92f76fe407: Waiting
-7a1a926b41ec: Waiting
-d0c5b1b578f0: Waiting
-8b989697200d: Waiting
-17c7143ec5ac: Waiting
-f4658e0538c1: Waiting
-acf89ed73193: Layer already exists
-1a5db5fc09d1: Layer already exists
-44ef72c67da4: Layer already exists
-a03ae2f45899: Layer already exists
-12149a4247ce: Layer already exists
-17c7143ec5ac: Layer already exists
-f4658e0538c1: Layer already exists
-8b989697200d: Layer already exists
-f0fd3e52b8f5: Layer already exists
-5e92f76fe407: Layer already exists
-7a1a926b41ec: Layer already exists
-d0c5b1b578f0: Layer already exists
-96160384c805: Layer already exists
-6e73bb47a647: Layer already exists
-a483da8ab3e9: Layer already exists
-1.0: digest: sha256:8ba1ab544e7c8107396056c58c08916e3903d39082a745320336ee3d5a44af9d size: 3455
+6c693923e4be: Preparing
+9979562681b1: Preparing
+978d6202eb4f: Preparing
+7a4ec8e072ae: Preparing
+cbf423f7b432: Preparing
+1102044852f9: Preparing
+2cce411e88cb: Preparing
+32c2677b1972: Preparing
+ea1a60aefcf2: Preparing
+c97cd288dcd2: Preparing
+4e0069f7179f: Preparing
+f8fad3f81b7e: Preparing
+b9fbb0a472c1: Preparing
+3903db1df9b3: Preparing
+1f00ff201478: Preparing
+32c2677b1972: Waiting
+ea1a60aefcf2: Waiting
+c97cd288dcd2: Waiting
+4e0069f7179f: Waiting
+f8fad3f81b7e: Waiting
+b9fbb0a472c1: Waiting
+3903db1df9b3: Waiting
+1f00ff201478: Waiting
+1102044852f9: Waiting
+2cce411e88cb: Waiting
+978d6202eb4f: Layer already exists
+9979562681b1: Layer already exists
+cbf423f7b432: Layer already exists
+6c693923e4be: Layer already exists
+7a4ec8e072ae: Layer already exists
+1102044852f9: Layer already exists
+2cce411e88cb: Layer already exists
+ea1a60aefcf2: Layer already exists
+32c2677b1972: Layer already exists
+c97cd288dcd2: Layer already exists
+4e0069f7179f: Layer already exists
+f8fad3f81b7e: Layer already exists
+3903db1df9b3: Layer already exists
+1f00ff201478: Layer already exists
+b9fbb0a472c1: Layer already exists
+latest: digest: sha256:8430358d79f6fe4f24a228fd0ee3b7a7544eecb406ced0ec6420b763338c9146 size: 3455
 [Pipeline] }
 [Pipeline] // script
 [Pipeline] }
