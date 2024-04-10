@@ -1,24 +1,5 @@
-Trabalho da disciplina: Integração Contínua e DevOps,
-1.	Utilize o Docker para criar uma imagem personalizada de alguma aplicação previamente construída e publique a imagem no Dockerhub.
+Executando pela linha de comando um-a-um...
 
-2.	Suba a imagem em um cluster Kubernetes seguindo as especificações:
-    a.	Utilize Deployment para subir a aplicação com 4 réplicas.
-    b.	Exponha a aplicação de forma que fique acessível fora do cluster (NODEPORT).
-    c.	Para aplicação que fizer uso de banco de dados, crie um POD com o mesmo e deixe acessível através do ClusterIP.
-    d.	Crie um probe para a aplicação (Readness ou Liveness).
-
-3.	Crie uma estrutura para monitorar a aplicação com o Prometheus e o Grafana (ou qualquer ferramenta de monitoramento que tenha um servidor de métricas e alguma ferramenta para dashboards).
-    a.	Apenas o Grafana deverá ficar acessível para fora do cluster.
-    b.	Utilize um PVC para escrever os dados do Prometheus de maneira persistente.
-    c.	Crie dashboards do Grafana que exponha dados sensíveis da sua aplicação (memória, cpu, etc...).
-
-4.	Utilize o Jenkins ou qualquer outra ferramenta para criar um pipeline de entrega do projeto.
-
-5.	Execute um stress test do seu projeto e tire print do Dashboard sofrendo alterações.
-
-Resposta:
-
-1. Executando pela linha de comando um-a-um...
 docker network create net-singular
 docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .
 docker push alfecjo/bd-postgres:1.0
@@ -40,21 +21,24 @@ docker build -t alfecjo/ic-devops:1.0 .
 docker push alfecjo/ic-devops:1.0
 docker run --name ic-devops -p 8080:8080 -d --network net-singular alfecjo/ic-devops:1.7
 docker logs e51ee53543abXXXXXXX
+_____________________________________________________________________________________________
+Executando o Docker Compose...
 
-2. Executando o Docker Compose...
 docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .
 docker build -t alfecjo/ic-devops:1.0 .
 docker-compose up
+_____________________________________________________________________________________________
+Executando pelo Kubernetes
 
-3. Executando pelo Kubernetes
-    a.Certifique-se de que o kubectl esteja configurado corretamente para se comunicar com o seu
-    cluster Kubernetes. Você pode configurar o kubectl para apontar para o seu cluster EKS 
+    O kubectl deve estar configurado corretamente para se comunicar com o 
+    cluster Kubernetes.
+    É possível configurar o kubectl para apontar para o seu cluster EKS 
     executando aws eks update-kubeconfig --name <nome-do-cluster>.
 
-    b.Depois de configurar o kubectl, navegue até o diretório onde os arquivos YAML estão
+    kubectl Ok!, navegue até o diretório onde os arquivos YAML estão
     localizados.
 
-Execute o seguinte comando para implantar os recursos no Kubernetes NESTA ORDEM:
+    comando para implantar os recursos no Kubernetes NESTA ORDEM:
 
 kubectl apply -f postgres-statefulset.yaml
 kubectl get statefulset
@@ -83,37 +67,20 @@ kubectl get pv
 kubectl apply -f grafana-deployment.yaml
 kubectl describe pod
 kubectl apply -f grafana-service.yaml
-_____________________________________________________________________________________________
-(kubectl port-forward service/prometheus-service 9090:9090)
-D:\VSCodeWork\contador-vendas (main)                        
-λ kubectl port-forward service/prometheus-service 9090:9090 
-Forwarding from 127.0.0.1:9090 -> 9090                      
-Forwarding from [::1]:9090 -> 9090                          
-Handling connection for 9090                                
-Handling connection for 9090                                
 
-no Prometheus usei essa url
-http://prometheus-service:9090
+Após executar esses comandos, o Kubernetes começará a criar os recursos
+    especificados nos arquivos YAML. Dá para verificar o status dos recursos
+    usando comandos como 
+    kubectl get pods
+    kubectl get services
+    kubectl get deployment
 
-kubectl get events
+Quando todos os PODs estiverem em estado "Running" e os serviços estiverem 
+    disponíveis, sua aplicação e banco de dados estarão em funcionamento
+    no cluster Kubernetes.
 
-_____________________________________________________________________________________________
-acessando o grafana
-kubectl get svc grafana-service
-
-                                                                              
-:\VSCodeWork\contador-vendas\manifests (main)                                 
- kubectl get svc grafana-service                                              
-AME              TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE   
-rafana-service   NodePort   10.110.51.52   <none>        80:30735/TCP   9h    
-                                                                              
-No Chrome
-http://localhost:30735/login
-admin
-admin
-_____________________________________________________________________________________________
-
-Para localizar a porta que a aplicação está executando:
+Localizar a porta que a aplicação está executando:
+(Enquanto ñ assimila o command get svc mentalmente. Depois pode firmar a port de dentro do service)
 kubectl get svc contador-vendas-service
 
 NAME                      TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
@@ -132,25 +99,39 @@ ou rodar o ipconfig e resgatar o endereço IPv4(WSL):
    Gateway Padrão. . . . . . . . . . . . . . . :
 
    http://172.28.240.1:31206/vendas/total-cancelled-sales
+_____________________________________________________________________________________________
+Se precisar expor uma port para o Prometheus
+kubectl port-forward service/prometheus-service 9090:9090
 
-kubectl get pods
+após o comando:
+D:\VSCodeWork\contador-vendas (main)                        
+λ kubectl port-forward service/prometheus-service 9090:9090 
+Forwarding from 127.0.0.1:9090 -> 9090                      
+Forwarding from [::1]:9090 -> 9090                          
+Handling connection for 9090                                
+Handling connection for 9090                                
 
+no Prometheus usei essa url
+http://prometheus-service:9090
+_____________________________________________________________________________________________
+Para verificar algum problema que não foi possível identificar com
 kubectl logs contador-vendas-9fffd4bdf-9f78s
 (também posso ver os logs pelo DockerDesktop)
-
-c.Após executar esses comandos, o Kubernetes começará a criar os recursos
-    especificados nos arquivos YAML. Você pode verificar o status dos recursos
-    usando comandos como kubectl get pods, kubectl get services, etc.
-
-d.Quando todos os PODs estiverem em estado "Running" e os serviços estiverem 
-    disponíveis, sua aplicação e banco de dados estarão em funcionamento
-    no cluster Kubernetes.
-
-Para acessar sua aplicação, você pode usar o IP e a porta do serviço definido
- no arquivo contador-vendas-service.yaml. Para acessar o banco de dados, você
- pode usar o endereço do serviço PostgreSQL definido no arquivo postgres-service.yaml
- e a porta padrão do PostgreSQL (5432, a menos que tenha sido modificada).
-
+kubectl get events
+_____________________________________________________________________________________________
+acessando o grafana
+kubectl get svc grafana-service
+                                                                              
+:\VSCodeWork\contador-vendas\manifests (main)                                 
+ kubectl get svc grafana-service                                              
+AME              TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE   
+rafana-service   NodePort   10.110.51.52   <none>        80:30735/TCP   9h    
+                                                                              
+No Chrome
+http://localhost:30735/login
+admin
+admin
+_____________________________________________________________________________________________
 Opção 1 - Para encerrar os recursos implantados no Kubernetes, você pode usar o comando
  kubectl delete seguido dos arquivos YAML correspondentes aos recursos que você
  implantou.
@@ -172,10 +153,6 @@ kubectl delete pvc grafana-data
 kubectl delete service grafana-service
 kubectl delete deployment grafana-deployment
 
-Isso irá excluir os recursos que foram implantados anteriormente no cluster Kubernetes.
-Certifique-se de estar no diretório correto onde os arquivos YAML estão localizados ou
-forneça o caminho completo para cada arquivo YAML, se estiver em um diretório diferente.
-
 ESCALAR/RETORNAR RÉPLICAS
 kubectk scale deploy contador-vendas --replicas=n onde n é o número de réplicas...
 
@@ -189,3 +166,101 @@ pela imagem é o spec:, container:, name:)
 
 ALTERANDO PARA REVERTER (undo) A ALTERAÇÃO..
     kubectl rollout undo deploy contador-vendas --to-revision=1
+_____________________________________________________________________________________________
+JMiter..
+Para executar o JMeter no modo de linha de comando (CLI) para testes de carga:
+jmeter -n -t [arquivo.jmx] -l [arquivo_resultados.jtl] -e -o [caminho_para_a_pasta_do_relatorio_web]
+
+Criado em d:\VSCodeWork 
+jmiter.bat
+
+-n: Modo não GUI (CLI).
+-t [arquivo.jmx]: Especifica o arquivo JMX que contém o plano de teste.
+-l [arquivo_resultados.jtl]: Especifica o arquivo onde os resultados do teste serão salvos.
+-e: Gera o relatório HTML do teste.
+-o [caminho_para_a_pasta_do_relatorio_web]: Especifica o diretório onde o relatório HTML será salvo.
+_____________________________________________________________________________________________
+Jenkins
+Para executar o aplicativo, em d:\VSCodeWork:
+java -jar jenkins.war e depois, no navegador chame localhost:8080, entre com login e password..
+
+caso haja um arquivo jenkinsfile na raiz do projeto, basta, na configuração do Jenkins
+Painel de controle\contador-vendas-pipeline\Configuração em: Pipeline\Definition 
+escolher: Pipeline script from SCM, que o jenkinsfile se encarrega do resto...
+
+ou faça o script no próprio Jenkins.. na mesma aba anteriormente citada, escolha: Pipeline script..
+_____________________________________________________________________________________________
+
+pipeline {
+    agent any
+    
+    tools {
+        maven "mvn"
+    }
+    
+    options {
+        timeout(time: 1, unit: 'HOURS')
+    }
+    
+    environment {
+        GIT_HEAD = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
+    }
+    
+    stages {
+        stage('Exibir Variáveis de Ambiente') {
+            steps {
+                sh '''
+                    echo "PATH=${PATH}" 
+                    echo "M2_HOME=${M2_HOME}" 
+                '''
+            }
+        }
+        
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/alfecjo/contador-vendas.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo "IMAGE VERSION: ${GIT_HEAD}"
+                script {
+                    sh "docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres ."
+                    sh "docker push alfecjo/bd-postgres:1.0"
+        
+                    sh "docker build -t alfecjo/ic-devops:1.0 ."
+                    sh "docker push alfecjo/ic-devops:1.0"
+                }
+                echo 'Implantação do projeto...'
+            }
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
+        }
+        
+        success {
+            echo 'O pipeline foi executado com sucesso!'
+        }
+        
+        failure {
+            echo 'O pipeline falhou. Verifique os logs para mais detalhes.'
+        }
+    }
+}
+

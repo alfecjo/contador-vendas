@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    tools {
+        maven "mvn"
+    }
+    
+    options {
+        timeout(time: 1, unit: 'HOURS')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                git branch: 'main', url: 'https://github.com/alfecjo/contador-vendas.git'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                bat label: 'Build with Maven', script: 'cmd.exe /C "C:\\Users\\user\\.jenkins\\tools\\hudson.tasks.Maven_MavenInstallation\\mvn\\bin\\mvn.cmd clean package && exit %%ERRORLEVEL%%"'
+            }
+        }
+        
+        stage('Build Docker Image App contador-vendas') {
+            steps {
+                script {
+                    bat label: 'Build with Docker App', script: 'cmd.exe /C "docker build -t alfecjo/ic-devops:1.0 ."'
+                    bat label: 'Push with Docker App', script: 'cmd.exe /C "docker push alfecjo/ic-devops:1.0"'
+                }
+            }
+        }
+        
+        stage('Build Docker Image BD postgres') {
+            steps {
+                script {
+                    bat label: 'Build with Docker BD', script: 'cmd.exe /C "docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres ."'
+                    bat label: 'Push with Docker BD', script: 'cmd.exe /C "docker push alfecjo/bd-postgres:1.0"'
+                }
+            }
+        }
+    }
+}
