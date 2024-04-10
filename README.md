@@ -102,7 +102,9 @@ Crie dashboards do Grafana que exponham dados sensíveis da sua aplicação (mem
 ### 4. Pipeline de entrega do projeto com Jenkins
 Utilize o Jenkins ou qualquer outra ferramenta para criar um pipeline de entrega do projeto.
 
-??????????????????????????????????????????????????????????
+em contador-vendas\jenkins-saida-console.txt está a saída console da operação<br>
+em contador-vendas\jenkinsfile está a montagem<br>
+![Jenkins](jenkins.jpg)
 
 ### 5. Execução de stress test e monitoramento
 Execute um stress test do seu projeto e tire prints do Dashboard sofrendo alterações.
