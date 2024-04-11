@@ -1,5 +1,5 @@
 ### DevOps com Java/Spring/Postgres/Docker/Kubernetes/Prometheus/Grafana (Vscode - PostgresSQL - Springboot - Java - Kubernetes - Github - Dockerhub - Dockerdesktop - Jmeter - Jenkins)
-### Trabalho da disciplina: Integração Contínua e DevOps<br>
+### Integração Contínua e DevOps<br>
 
 ### 1. Criação e publicação da imagem Docker
 Utilize o Docker para criar uma imagem personalizada de alguma aplicação previamente construída e publique a imagem no Dockerhub.
