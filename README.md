@@ -1,4 +1,4 @@
-### Ao Instituto Infnet - Prof. Leonardo Glória.. (2024-04-14)
+### DevOps com Java/Spring/Postgres/Docker/Kubernetes/Prometheus/Grafana (Vscode - PostgresSQL - Springboot - Java - Kubernetes - Github - Dockerhub - Dockerdesktop - Jmeter - Jenkins)
 ### Trabalho da disciplina: Integração Contínua e DevOps<br>
 
 ### 1. Criação e publicação da imagem Docker
