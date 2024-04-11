@@ -1,5 +1,5 @@
-### Ao Instituto Infnet - Prof. Leonardo Glória.. (2024-04-14)
-### Trabalho da disciplina: Integração Contínua e DevOps<br>
+### DevOps com Java/Spring/Postgres/Docker/Kubernetes/Prometheus/Grafana (Vscode - PostgresSQL - Springboot - Java - Kubernetes - Github - Dockerhub - Dockerdesktop - Jmeter - Jenkins)
+### Integração Contínua e DevOps<br>
 
 ### 1. Criação e publicação da imagem Docker
 Utilize o Docker para criar uma imagem personalizada de alguma aplicação previamente construída e publique a imagem no Dockerhub.
