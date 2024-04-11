@@ -8,4 +8,6 @@ spec:
     app: postgres   # Seleciona os PODs que correspondem a este rótulo
   ports:
   - port: 5432   # Porta em que o Service estará escutando
-    targetPort: 5432   # Porta em que o PostgreSQL está escutando dentro dos PODs
+    targetPort: 5432    # Porta em que o PostgreSQL está escutando dentro dos PODs
+                        # Quando o tipo não é especificado, o Kubernetes atribuirá
+                        #  automaticamente o tipo ClusterIP por padrão.

@@ -1,8 +1,8 @@
-Executando pela linha de comando um-a-um...
+Executando pela linha de comando um-a-um via Docker...
 
 docker network create net-singular
-docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .
-docker push alfecjo/bd-postgres:1.0
+docker build -t alfecjo/bd-postgres:latest -f Dockerfile.postgres .
+docker push alfecjo/bd-postgres:latest
 docker run --name postgres -p 5432:5432 -d --network net-singular alfecjo/bd-postgres:1.0
 docker exec -it 5f bash
 psql -U postgres -d master
@@ -12,20 +12,25 @@ SELECT * FROM VENDAS;
 exit
 exit
 mvn test
+_____________________________________________________________________________________________
+****MUITO IMPORTANTE -> QUEM FAZ ISSO AGORA É O ****JENKINS****
+****MUITO IMPORTANTE -> QUEM FAZ ISSO AGORA É O ****JENKINS****
+****MUITO IMPORTANTE -> QUEM FAZ ISSO AGORA É O ****JENKINS****
+****MUITO IMPORTANTE -> QUEM FAZ ISSO AGORA É O ****JENKINS****
 
 ##### Ver antes o application.properties..
 
 mvn clean package -DskipTests
 
-docker build -t alfecjo/ic-devops:1.0 .
-docker push alfecjo/ic-devops:1.0
-docker run --name ic-devops -p 8080:8080 -d --network net-singular alfecjo/ic-devops:1.7
+docker build -t alfecjo/ic-devops:latest .
+docker push alfecjo/ic-devops:latest
+docker run --name ic-devops -p 8080:8080 -d --network net-singular alfecjo/ic-devops:latest
 docker logs e51ee53543abXXXXXXX
 _____________________________________________________________________________________________
 Executando o Docker Compose...
 
-docker build -t alfecjo/bd-postgres:1.0 -f Dockerfile.postgres .
-docker build -t alfecjo/ic-devops:1.0 .
+docker build -t alfecjo/bd-postgres:latest -f Dockerfile.postgres .
+docker build -t alfecjo/ic-devops:latest .
 docker-compose up
 _____________________________________________________________________________________________
 Executando pelo Kubernetes
