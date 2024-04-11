@@ -61,6 +61,12 @@ exit
 kubectl apply -f contador-vendas-deployment.yaml
 kubectl apply -f contador-vendas-service.yaml
 
+****MUITO IMPORTANTE -> recriar a configmap do Prometheus
+****MUITO IMPORTANTE -> recriar a configmap do Prometheus
+LEMBRANDO QUE PARA EXECUTAR O COMANDO ABAIXO É NECESSÁRIO ESTAR EM \resources OU...
+D:\VSCodeWork\contador-vendas\src\main\resources\prometheus.yaml
+kubectl create configmap prometheus-config --from-file=prometheus.yml=prometheus.yaml
+
 kubectl apply -f prometheus-pvc.yaml
 kubectl get pv
 kubectl apply -f prometheus-deployment.yaml
@@ -268,3 +274,33 @@ pipeline {
         }
     }
 }
+
+_____________________________________________________________________________________________
+
+depois pode deletar
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus
+          ports:
+            - containerPort: 9090
+          volumeMounts:
+            - name: prometheus-data
+              mountPath: /prometheus/data
+      volumes:
+        - name: prometheus-data
+          persistentVolumeClaim:
+            claimName: prometheus-data
