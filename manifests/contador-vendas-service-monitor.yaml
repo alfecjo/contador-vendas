@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: contador-vendas-service-monitor
+spec:
+  selector:
+    matchLabels:
+      app: contador-vendas  # Corresponde ao rótulo do `Service` da sua aplicação
+  namespaceSelector:
+    matchNames:
+      - default  # Altere se o namespace for diferente
+  endpoints:
+    - port: "8080"  # Porta exposta pelo `Service` (porta da sua aplicação)
+      path: /actuator/prometheus  # Caminho para coletar as métricas da aplicação Spring
+      interval: 30s  # Intervalo de coleta de métricas (ajuste conforme necessário)

@@ -17,10 +17,17 @@ spec:
           image: prom/prometheus
           ports:
             - containerPort: 9090
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
           volumeMounts:
             - name: prometheus-data
               mountPath: /prometheus/data
+            - name: prometheus-config
+              mountPath: /etc/prometheus/
       volumes:
         - name: prometheus-data
           persistentVolumeClaim:
             claimName: prometheus-data
+        - name: prometheus-config
+          configMap:
+            name: prometheus-config

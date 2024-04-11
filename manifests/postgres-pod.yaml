@@ -8,6 +8,6 @@ metadata:
 spec:
   containers:
   - name: postgres   # Nome do contêiner
-    image: alfecjo/bd-postgres:1.0   # Imagem Docker usada para criar o contêiner do PostgreSQL
+    image: alfecjo/bd-postgres:latest   # Imagem Docker usada para criar o contêiner do PostgreSQL
     ports:
     - containerPort: 5432   # Porta em que o PostgreSQL está escutando dentro do contêiner
